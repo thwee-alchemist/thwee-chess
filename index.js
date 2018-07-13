@@ -28,8 +28,6 @@ http.listen(PORT, function(){
 
 io.on('connection', function(socket){
   console.log('a user connected');
-  
-  
 
   socket.on('board-id', function(info){
     socket.join(info.board_id);
