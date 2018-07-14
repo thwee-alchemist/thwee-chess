@@ -31,6 +31,7 @@ io.on('connection', function(socket){
   console.log('a user connected');
 
   socket.on('table', function(info){
+    socket.leave(socket.table);
     socket.join(info.table);
     socket.table = info.table;
   });
