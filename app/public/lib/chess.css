@@ -24,7 +24,7 @@ body {
   margin: 0;
   border: 0;
   padding: 0;
-  background-image: url('/art/background/cereal-flipped.jpg');
+  background-image: url('/art/background/rainbow.jpg');
   background-size: 100%;
   background-repeat: no-repeat;
 }
@@ -56,20 +56,14 @@ table {
 }
 
 
-tr:nth-child(odd)>td:nth-child(odd):not(#pieces) {
-  background-image: url('/art/field/red.png');
+tr:nth-child(odd)>td:nth-child(odd):not(#pieces),
+tr:nth-child(even)>td:nth-child(even):not(#pieces){
+  background-color: #F4D03F;
 }
 
-tr:nth-child(odd)>td:nth-child(even):not(#pieces) {
-  background-image: url('/art/field/brown.png');
-}
-
-tr:nth-child(even)>td:nth-child(even):not(#pieces) {
-  background-image: url('/art/field/red.png');
-}
-
+tr:nth-child(odd)>td:nth-child(even):not(#pieces),
 tr:nth-child(even)>td:nth-child(odd):not(#pieces) {
-  background-image: url('/art/field/brown.png');
+  background-color: #58D68D;
 }
 
 td#chat {
@@ -103,7 +97,6 @@ td#pieces {
 }
 
 #chat {
-  z-index: -1;
   position: fixed;
   top: 0;
   right: 0;
