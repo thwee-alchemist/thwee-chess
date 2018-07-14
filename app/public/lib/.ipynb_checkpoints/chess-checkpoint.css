@@ -102,15 +102,13 @@ td#pieces {
   right: 0;
   width: 500px;
   height: 100%;
-  border: 1px solid black;
-  background-color: rgba(0xf2, 0xf2, 0xf2, 0.5);
 }
 
 #chat > ul {
   list-style: none;
 }
 
-#chat> (ul, form) {
+#chat>form {
   position: fixed;
   bottom: 0;
 }
