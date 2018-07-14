@@ -10,7 +10,7 @@
   "repository": {
     "type": "git",
     "url": "https://git.heroku.com/thwee-chess.git"
-  }
+  },
   "author": "Joshua Marshall Moore",
   "license": "ISC",
   "dependencies": {
