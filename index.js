@@ -16,10 +16,10 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public')));
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/index.html'));
+  res.sendFile('public/index.html');
 });
 
 var tables = new Map();
