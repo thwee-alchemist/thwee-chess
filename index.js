@@ -32,26 +32,15 @@ io.on('connection', function(socket){
 
   socket.on('table', function(info){
     socket.join(info.table);
-
     socket.table = info.table;
-    
-    if(!tables.has(info.table)){
-      tables.set(info.table, {
-        name: info.table,
-        board: info.board
-      });
-    }else{
-      socket.to(info.table).emit('board', tables.get(info.table).board);
-    }
   });
   
   socket.on('board-piece-position', info => {
     socket.to(info.board).emit('piece-move', info.piece)
-    tables.get(socket.table).board[info.piece.id].position = info.piece.position;
   });
 
   socket.on('disconnect', function(){
-    console.log('a user disconnected');
+    console.log('a  user disconnected');
   });
 });
 
