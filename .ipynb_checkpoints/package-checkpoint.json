@@ -7,9 +7,14 @@
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://git.heroku.com/thwee-chess.git"
+  }
   "author": "Joshua Marshall Moore",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.16.3",
     "socket.io": "^2.1.1"
   }
 }
