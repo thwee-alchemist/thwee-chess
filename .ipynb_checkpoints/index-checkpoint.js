@@ -1,3 +1,4 @@
+
 /*
   index.js
   Joshua Marshall Moore
@@ -15,30 +16,43 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
-app.use(express.static('public'))
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', function(req, res){
-  res.sendFile(__dirname + '/index.html');
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
+
+var tables = new Map();
 
 http.listen(PORT, function(){
   console.log(`listening on ${PORT}`);
 });
 
-
 io.on('connection', function(socket){
   console.log('a user connected');
-  
-  
 
-  socket.on('board-id', function(info){
-    socket.join(info.board_id);
+  socket.on('table', function(info){
+    console.log(info);
+    
+    socket.join(info.table);
+
+    socket.table = info.table;
+    
+    if(!tables.has(info.table)){
+      tables.set(info.table, {
+        name: info.table,
+        board: info.board
+      });
+    }else{
+      socket.to(info.table).emit('board', tables.get(info.table).board);
+    }
   });
   
   socket.on('board-piece-position', info => {
-    socket.join(info.board);
-    sokcet.emit('piece-move', info.piece)
-  })
+    console.log('board-piece-position', info);
+    socket.to(info.board).emit('piece-move', info.piece)
+    tables.get(socket.table).board[info.piece.id].position = info.piece.position;
+  });
 
   socket.on('disconnect', function(){
     console.log('user disconnected');

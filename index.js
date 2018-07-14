@@ -18,6 +18,10 @@ var io = require('socket.io')(http);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 var tables = new Map();
 
 http.listen(PORT, function(){
