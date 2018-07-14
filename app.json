@@ -1,0 +1,8 @@
+{
+  "name": "thwee-chess",
+  "description": "A chess server for social-cartography.net",
+  "repository": "https://git.heroku.com/thwee-chess.git",
+  "logo": "https://cdn.rawgit.com/heroku/node-js-getting-started/master/public/node.svg",
+  "keywords": ["chess", "socket.io", "node", "express", "heroku"],
+  "image": "heroku/nodejs"
+}
