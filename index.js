@@ -1,4 +1,3 @@
-
 /*
   index.js
   Joshua Marshall Moore
@@ -32,8 +31,6 @@ io.on('connection', function(socket){
   console.log('a user connected');
 
   socket.on('table', function(info){
-    console.log(info);
-    
     socket.join(info.table);
 
     socket.table = info.table;
@@ -49,13 +46,12 @@ io.on('connection', function(socket){
   });
   
   socket.on('board-piece-position', info => {
-    console.log('board-piece-position', info);
     socket.to(info.board).emit('piece-move', info.piece)
     tables.get(socket.table).board[info.piece.id].position = info.piece.position;
   });
 
   socket.on('disconnect', function(){
-    console.log('user disconnected');
+    console.log('a user disconnected');
   });
 });
 
